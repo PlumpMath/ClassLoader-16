@@ -4,10 +4,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.net.URLClassLoader;
 import java.net.URLConnection;
 
-public class MossClassLoader extends ClassLoader {
+public class MossClassLoader extends URLClassLoader {
 	
+	public MossClassLoader(URL[] urls) {
+		super(urls);
+	}
+
 	@Override
 	public Class<?> loadClass(String name) throws ClassNotFoundException {
 		if (name.endsWith("SomeClass")) {
